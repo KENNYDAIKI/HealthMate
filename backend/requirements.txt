@@ -1,0 +1,14 @@
+sentence-transformers
+pinecone[grpc]
+langchain
+flask
+pypdf
+python-dotenv
+langchain_openai
+langchain-pinecone
+langchain_community
+langchain_experimental
+pymongo
+dnspython
+-e .
+# Add any additional dependencies here
