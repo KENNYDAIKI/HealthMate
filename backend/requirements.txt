@@ -10,5 +10,5 @@ langchain_community
 langchain_experimental
 pymongo
 dnspython
--e .
+
 # Add any additional dependencies here

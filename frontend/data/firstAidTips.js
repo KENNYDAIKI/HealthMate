@@ -1,3 +1,5 @@
+import { createPathConfigForStaticNavigation } from "@react-navigation/native";
+
 const firstAidTips = [
   {
     id: '1',
@@ -119,8 +121,22 @@ const firstAidTips = [
     'Do not suck out the venom or apply ice or a tourniquet.',
     'Call emergency services immediately or get the person to a hospital as fast as possible.'
   ]
+},
+{
+  id: '12',
+  title: 'CPR (Cardiopulmonary Resuscitation)',
+  steps: [
+    'Check the area for safety before approaching the person. (Ensure there is no danger to you or them.)',
+    'Call emergency services immediately or have someone else do it. (Get professional help on the way.)',
+    'Check if the person is breathing and has a pulse for no more than 10 seconds. (Look for chest movement, listen for breath, feel for a pulse.)',
+    'Place the heel of one hand on the center of the chest, the other hand on top. (Keep arms straight and shoulders above hands.)',
+    'Push hard and fast at a depth of 5–6 cm for adults, 100–120 compressions per minute. (Use the beat of “Stayin’ Alive” as a guide.)',
+    'If trained, give 2 rescue breaths after every 30 compressions, making sure the chest rises. (Tilt the head back, lift the chin, pinch the nose.)',
+    'For children, use one hand and push about 5 cm deep; for infants, use two fingers and push about 4 cm deep. (Be gentle but firm.)',
+    'Continue CPR until the person starts breathing, a defibrillator is available, or professional help takes over. (Do not stop unless absolutely necessary.)'
+  ]
 }
-
 ];
+
 
 export default firstAidTips;

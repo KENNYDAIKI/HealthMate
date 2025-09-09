@@ -1,9 +1,9 @@
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
-from src.prompt import system_prompt
+
 from src.helper import download_hugging_face_embeddings
 from langchain_pinecone import PineconeVectorStore
-from langchain_openai import OpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
@@ -38,7 +38,7 @@ retriever=docsearch.as_retriever(search_type='similarity',search_kwargs={'k': 3}
 
 
 
-llm = OpenAI(temperature=0.4, max_tokens=500)
+llm = ChatOpenAI(temperature=0.4,  max_tokens=500)
 prompt = ChatPromptTemplate.from_messages([
     ("system", system_prompt),
     ("human", "{input}")
@@ -62,7 +62,7 @@ def chat():
     print("User input:", msg)
 
     response = rag_chain.invoke({"input": msg})
-    print("Response:", response["answer"])
+    print( response["answer"])
 
     return jsonify({"reply": response["answer"]})
 

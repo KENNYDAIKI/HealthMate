@@ -10,8 +10,8 @@ import {
   Platform,
   UIManager,
 } from 'react-native';
-import firstAidData from '../data/firstAidTips';
- // Your /JS data file
+import { SafeAreaView } from 'react-native-safe-area-context';
+import firstAidData from '../data/firstAidTips'; // JS data file
 
 // Enable LayoutAnimation for Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -54,29 +54,38 @@ const FirstAidScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder="Search First Aid..."
-        placeholderTextColor="#999"
-        style={styles.searchBar}
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
-      <FlatList
-        data={filteredData}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.listContent}
-      />
-    </View>
+    <SafeAreaView style={styles.safeArea} edges={['top']}>
+      <View style={styles.container}>
+        <TextInput
+          placeholder="Search First Aid..."
+          placeholderTextColor="#999"
+          style={styles.searchBar}
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
+        <FlatList
+          data={filteredData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.listContent}
+          keyboardShouldPersistTaps="handled"
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+    paddingTop: 12, // extra top padding for breathing room
   },
   searchBar: {
     backgroundColor: '#f0f0f0',
